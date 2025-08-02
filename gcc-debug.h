@@ -36,18 +36,16 @@
 #ifndef _DEBUG_H /* Don't redefine functions if already defined. */
 #define _DEBUG_H        1
 
-#include <time.h>
-
 #if defined DEBUG  /* Execute code if DEBUG is True */ 
-#define debug(code) do {fprintf(stdout, "\nDebug\t: %s line : %d : ", \
-            __FILE__, __LINE__); code;} while(0)
+#define debug(code) do {fprintf(stdout, "Debug\t: %s line : %d : ", \
+            __FILE__, __LINE__); code; fprintf(stdout, "\n");} while(0)
 #else
 #define debug(code)
 #endif
 
 #if defined VERBOSE  /* Execute code if VERBOSE is True */ 
 #define verbose(code) do {fprintf(stdout, "Verbose\t: %s line : %d : ", \
-            __FILE__, __LINE__); code;} while(0)
+            __FILE__, __LINE__); code; fprintf(stdout, "\n");} while(0)
 #else
 #define verbose(code)
 #endif
@@ -70,6 +68,8 @@
 #endif
 
 #if defined NAME
+#include <time.h>
+
 void error(int i_errno, const char *s_format, ...)  /* Print formatted error message and exit returning errno */
 {
    va_list t_args;
