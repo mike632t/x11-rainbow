@@ -57,6 +57,7 @@ FLAGS	+=  -no-pie
 endif
 
 ifdef DEBUG
+FLAGS	+=  -DDEBUG
 FLAGS	+=  -g
 endif
 
